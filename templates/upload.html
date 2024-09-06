@@ -1,0 +1,47 @@
+
+{% extends "base.html" %} {% block title %}Upload{% endblock %} 
+
+
+{% block content%}
+<div class="container">
+<h1 class="text-center">Upload Logo Application</h1>
+          
+<div class="row">
+   
+    <p>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+        {% for message in messages %}
+             <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        </p>
+        {#  Below is the predefined area and I can modify it based on the product #}
+        {% if filename %}
+        
+        <div class="col-12">
+           
+            <img src="{{ url_for('uploads.display_image', filename=filename) }}" 
+                 style="max-width: {{max_widths}}px; max-height: {{max_heights}}px;"
+            >
+        </div>
+        {% endif %}
+        <h2>Select a file to upload</h2>
+        <form method="post" action="/upload" enctype="multipart/form-data">
+        <dl>
+        <p>
+            <input type="file" name="file" class="form-control" autocomplete="off" required>
+         </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit" class="btn btn-info">
+        </p>
+        </form>
+</div>
+</div>
+
+{% endblock %}
+
