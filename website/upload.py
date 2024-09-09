@@ -36,7 +36,7 @@ def upload_image():
         flash('Image successfully uploaded and displayed below')
         return render_template('upload.html', filename=filename, max_widths = config_width, max_heights =config_height )
     else:
-        flash('Allowed image types are - png, jpg, jpeg, gif')
+        flash('Allowed image types are - png, jpg')
         return redirect(request.url)
     
 @uploads.route('/display/<filename>')
